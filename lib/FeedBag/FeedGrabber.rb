@@ -12,8 +12,8 @@ class FeedGrabber
     @atom.entries
   end
   
-  def parse_entries
-    parsed_entries = entries.each_with_object([]) do |entry, memo|
+  def parse_entries(l_entries = entries)
+    parsed_entries = l_entries.each_with_object([]) do |entry, memo|
       tempHash = {}
       FeedBag::Terms::ATOM_FIELDS.each_with_index do |field, index|
         if entry.send(field).respond_to?(:content)

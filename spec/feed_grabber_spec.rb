@@ -18,7 +18,7 @@ describe FeedGrabber do
       @grabber.atom.entries
     end
     
-    it "has a shortcut for getting to entries" do
+    it "has a shortcut to atom.entries" do
       expect(@grabber.entries).to eq @grabber.atom.entries
     end
     
@@ -27,7 +27,18 @@ describe FeedGrabber do
       expect(parsed_entries.class).to eq Array
       expect(parsed_entries.first.class).to eq Hash
     end
+    
+    it "can parse all or a number of entries" do
+      parsed_entries = @grabber.parse_entries
+      expect(parsed_entries.count).to eq @grabber.entries.count
 
-    #expect(@grabber.atom.entries)
+      partially_parsed_entries = @grabber.parse_entries(@grabber.entries[0..4])
+      expect(partially_parsed_entries.count).to eq 5
+    end
+    
   end
+  
+  
+  
+
 end
