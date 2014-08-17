@@ -1,5 +1,5 @@
 # FeedBag
-
+-Early Development-
 Parse Atom feeds and store entries in your database.  Find out if you've got the latest feeds, and if not, pull down the new entries and update your db.  
 
 ## Installation

@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe FeedGrabber do
   before do
-    # Latest Wikipedia Entries - VCR
-    @grabber = FeedGrabber.new("http://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=atom")
+    VCR.use_cassette('new_wikipedia') do
+      @grabber = FeedGrabber.new("http://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=atom")
+    end
   end
   
   it 'should be able to initalize a feed' do
